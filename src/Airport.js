@@ -1,5 +1,3 @@
-// let weather;
-
 function Airport(weather) {
     this.hanger = [];
     this.weather = typeof weather !== 'undefined' ? weather : new Weather()
@@ -11,8 +9,7 @@ Airport.prototype.landPlane = function(plane) {
      }
      else
          this.hanger.push(plane);
-}
-
+};
 
 Airport.prototype.takeOffPlane = function() {
     return this.hanger.pop();
