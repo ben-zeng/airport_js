@@ -28,7 +28,6 @@ describe("Airport", function () {
 
     describe("#takeOffPlane", function () {
         it("let a landed plan to take off and confirm no longer in hanger", function () {
-            //spyOn(weather,"isStormy").and.returnValue(false);
             airport.landPlane(plane);
             airport.takeOffPlane();
             expect(airport.hanger).not.toContain(plane);
