@@ -1,10 +1,12 @@
 describe("Airport", function() {
   let airport;
   let plane;
+  let weather;
 
   beforeEach(function() {
     airport = new Airport();
     plane = new Plane();
+    weather = new Weather();
   });
 
   describe("#landPlane", function() {
