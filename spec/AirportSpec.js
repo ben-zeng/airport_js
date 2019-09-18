@@ -39,8 +39,16 @@ describe("Airport", function () {
         });
     });
 
-    describe("When stormy", function () {
+    describe("#isFull", function () {
+      it("returns true if airport is at capacity", function () {
+          for (let i = 1; i <= airport.capacity; i++) {
+            airport.landPlane(plane);
+          }
+          expect(airport.isFull).toBeTruthy();
+      });
+    });
 
+    describe("When stormy", function () {
         beforeEach(function () {
             weather.isStormy.and.returnValue(true);
         });
@@ -52,5 +60,21 @@ describe("Airport", function () {
         });
 
     });
+
+  describe("When airport capacity is full", function () {
+    beforeEach(function () {
+      weather.isStormy.and.returnValue(false);
+    });
+
+    it("Airport does not allow plane to land", function () {
+      for (let i = 1; i <= airport.capacity; i++) {
+        airport.landPlane(plane);
+      }
+      expect(function () {
+        airport.landPlane(plane);
+      }).toThrowError("Airport at max capacity");
+    });
+
+  });
 
 });
